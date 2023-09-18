@@ -198,7 +198,10 @@ namespace niceland_private_vpn_config
                 _ = MessageBox.Show("JSON file saved successfully!");
 
                 // open explorer to the file
+                if (AfterCreationCheckBox.Checked)
+                {
                 Process.Start("explorer.exe", "/select, \"" + filePath + "\"");
+                }
             }
             catch (Exception ex)
             {

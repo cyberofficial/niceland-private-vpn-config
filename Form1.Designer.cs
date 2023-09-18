@@ -90,6 +90,7 @@
             label1 = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
+            AfterCreationCheckBox = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -122,6 +123,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(AfterCreationCheckBox);
             tabPage1.Controls.Add(RefreshRouterIP);
             tabPage1.Controls.Add(GenFileBtn);
             tabPage1.Controls.Add(groupBox3);
@@ -718,6 +720,16 @@
             tabPage3.Text = "Delete VPN";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // AfterCreationCheckBox
+            // 
+            AfterCreationCheckBox.AutoSize = true;
+            AfterCreationCheckBox.Location = new Point(133, 709);
+            AfterCreationCheckBox.Name = "AfterCreationCheckBox";
+            AfterCreationCheckBox.Size = new Size(315, 32);
+            AfterCreationCheckBox.TabIndex = 22;
+            AfterCreationCheckBox.Text = "Open to directory after creating.";
+            AfterCreationCheckBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -821,5 +833,6 @@
         private TabControl DomainTabs;
         private TabPage tabPage4;
         private ListBox DomainRecordsList;
+        private CheckBox AfterCreationCheckBox;
     }
 }
