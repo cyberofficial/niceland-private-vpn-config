@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            RefreshRouterIP = new Button();
             button1 = new Button();
             groupBox3 = new GroupBox();
             listBox2 = new ListBox();
@@ -120,6 +121,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(RefreshRouterIP);
             tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(groupBox3);
             tabPage1.Controls.Add(groupBox2);
@@ -158,6 +160,17 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Create New VPN";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // RefreshRouterIP
+            // 
+            RefreshRouterIP.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            RefreshRouterIP.Location = new Point(71, 390);
+            RefreshRouterIP.Name = "RefreshRouterIP";
+            RefreshRouterIP.Size = new Size(33, 33);
+            RefreshRouterIP.TabIndex = 21;
+            RefreshRouterIP.Text = "♻️";
+            RefreshRouterIP.UseVisualStyleBackColor = true;
+            RefreshRouterIP.Click += RefreshRouterIP_Click;
             // 
             // button1
             // 
@@ -362,6 +375,7 @@
             RouterIP.Margin = new Padding(3, 4, 3, 4);
             RouterIP.Name = "RouterIP";
             RouterIP.Size = new Size(301, 36);
+            RouterIP.Sorted = true;
             RouterIP.TabIndex = 17;
             // 
             // UserMbps
@@ -780,5 +794,6 @@
         private ToolStripMenuItem users_insert_btn;
         private ToolStripMenuItem users_delete_btn;
         private Button button1;
+        private Button RefreshRouterIP;
     }
 }
