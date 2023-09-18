@@ -32,7 +32,7 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             RefreshRouterIP = new Button();
-            button1 = new Button();
+            GenFileBtn = new Button();
             groupBox3 = new GroupBox();
             listBox2 = new ListBox();
             menuStrip3 = new MenuStrip();
@@ -65,7 +65,7 @@
             InternetAccess = new CheckBox();
             InterfaceIP = new MaskedTextBox();
             IP = new MaskedTextBox();
-            Tag = new TextBox();
+            VPNTag = new TextBox();
             APIKey = new TextBox();
             UID = new TextBox();
             groupBox1 = new GroupBox();
@@ -122,7 +122,7 @@
             // tabPage1
             // 
             tabPage1.Controls.Add(RefreshRouterIP);
-            tabPage1.Controls.Add(button1);
+            tabPage1.Controls.Add(GenFileBtn);
             tabPage1.Controls.Add(groupBox3);
             tabPage1.Controls.Add(groupBox2);
             tabPage1.Controls.Add(RouterIP);
@@ -135,7 +135,7 @@
             tabPage1.Controls.Add(InternetAccess);
             tabPage1.Controls.Add(InterfaceIP);
             tabPage1.Controls.Add(IP);
-            tabPage1.Controls.Add(Tag);
+            tabPage1.Controls.Add(VPNTag);
             tabPage1.Controls.Add(APIKey);
             tabPage1.Controls.Add(UID);
             tabPage1.Controls.Add(groupBox1);
@@ -172,16 +172,17 @@
             RefreshRouterIP.UseVisualStyleBackColor = true;
             RefreshRouterIP.Click += RefreshRouterIP_Click;
             // 
-            // button1
+            // GenFileBtn
             // 
-            button1.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(9, 813);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(235, 79);
-            button1.TabIndex = 20;
-            button1.Text = "Generate File";
-            button1.UseVisualStyleBackColor = true;
+            GenFileBtn.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            GenFileBtn.Location = new Point(9, 813);
+            GenFileBtn.Margin = new Padding(3, 4, 3, 4);
+            GenFileBtn.Name = "GenFileBtn";
+            GenFileBtn.Size = new Size(235, 79);
+            GenFileBtn.TabIndex = 20;
+            GenFileBtn.Text = "Generate File";
+            GenFileBtn.UseVisualStyleBackColor = true;
+            GenFileBtn.Click += GenFileBtn_Click;
             // 
             // groupBox3
             // 
@@ -471,13 +472,13 @@
             IP.Size = new Size(169, 34);
             IP.TabIndex = 14;
             // 
-            // Tag
+            // VPNTag
             // 
-            Tag.Location = new Point(207, 139);
-            Tag.Margin = new Padding(3, 4, 3, 4);
-            Tag.Name = "Tag";
-            Tag.Size = new Size(301, 34);
-            Tag.TabIndex = 13;
+            VPNTag.Location = new Point(207, 139);
+            VPNTag.Margin = new Padding(3, 4, 3, 4);
+            VPNTag.Name = "VPNTag";
+            VPNTag.Size = new Size(301, 34);
+            VPNTag.TabIndex = 13;
             // 
             // APIKey
             // 
@@ -759,7 +760,7 @@
         private TextBox APIKey;
         private TextBox UID;
         private CheckBox InternetAccess;
-        private TextBox Tag;
+        private TextBox VPNTag;
         private CheckBox LocalNetworkAccess;
         private NumericUpDown AvailableMbps;
         private NumericUpDown UserMbps;
@@ -793,7 +794,7 @@
         private ToolStripTextBox Access_Tag_TXT;
         private ToolStripMenuItem users_insert_btn;
         private ToolStripMenuItem users_delete_btn;
-        private Button button1;
+        private Button GenFileBtn;
         private Button RefreshRouterIP;
     }
 }
