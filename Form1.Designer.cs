@@ -585,6 +585,7 @@
             NAT_Tag.Name = "NAT_Tag";
             NAT_Tag.Size = new Size(241, 34);
             NAT_Tag.TabIndex = 13;
+            NAT_Tag.Text = "nat to 11";
             // 
             // label12
             // 
