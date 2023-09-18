@@ -31,9 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            button1 = new Button();
+            groupBox3 = new GroupBox();
+            listBox2 = new ListBox();
+            menuStrip3 = new MenuStrip();
+            newUserToolStripMenuItem = new ToolStripMenuItem();
+            Access_UID_TXT = new ToolStripTextBox();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            Access_Tag_TXT = new ToolStripTextBox();
+            users_insert_btn = new ToolStripMenuItem();
+            users_delete_btn = new ToolStripMenuItem();
             groupBox2 = new GroupBox();
             tabControl2 = new TabControl();
             tabPage4 = new TabPage();
+            listBox1 = new ListBox();
             menuStrip2 = new MenuStrip();
             newToolStripMenuItem = new ToolStripMenuItem();
             toolStripComboBox1 = new ToolStripComboBox();
@@ -43,26 +54,26 @@
             menuStrip1 = new MenuStrip();
             newEntryToolStripMenuItem = new ToolStripMenuItem();
             removeCurrentTabToolStripMenuItem = new ToolStripMenuItem();
-            comboBox1 = new ComboBox();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown4 = new NumericUpDown();
-            numericUpDown3 = new NumericUpDown();
-            numericUpDown1 = new NumericUpDown();
-            checkBox3 = new CheckBox();
-            checkBox2 = new CheckBox();
-            checkBox1 = new CheckBox();
-            maskedTextBox2 = new MaskedTextBox();
-            maskedTextBox1 = new MaskedTextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            RouterIP = new ComboBox();
+            UserMbps = new NumericUpDown();
+            EndPort = new NumericUpDown();
+            StartPort = new NumericUpDown();
+            AvailableMbps = new NumericUpDown();
+            CBInterfaceIP = new CheckBox();
+            LocalNetworkAccess = new CheckBox();
+            InternetAccess = new CheckBox();
+            InterfaceIP = new MaskedTextBox();
+            IP = new MaskedTextBox();
+            Tag = new TextBox();
+            APIKey = new TextBox();
+            UID = new TextBox();
             groupBox1 = new GroupBox();
-            maskedTextBox4 = new MaskedTextBox();
-            maskedTextBox3 = new MaskedTextBox();
+            NAT_Network = new MaskedTextBox();
+            NAT_Nat = new MaskedTextBox();
             label15 = new Label();
             label14 = new Label();
             label13 = new Label();
-            textBox4 = new TextBox();
+            NAT_Tag = new TextBox();
             label12 = new Label();
             label11 = new Label();
             label10 = new Label();
@@ -77,30 +88,20 @@
             label1 = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
-            listBox1 = new ListBox();
-            groupBox3 = new GroupBox();
-            menuStrip3 = new MenuStrip();
-            newUserToolStripMenuItem = new ToolStripMenuItem();
-            toolStripTextBox2 = new ToolStripTextBox();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripTextBox3 = new ToolStripTextBox();
-            insertToolStripMenuItem = new ToolStripMenuItem();
-            removeSelectedToolStripMenuItem1 = new ToolStripMenuItem();
-            listBox2 = new ListBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            groupBox3.SuspendLayout();
+            menuStrip3.SuspendLayout();
             groupBox2.SuspendLayout();
             tabControl2.SuspendLayout();
             tabPage4.SuspendLayout();
             menuStrip2.SuspendLayout();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)UserMbps).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)EndPort).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)StartPort).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AvailableMbps).BeginInit();
             groupBox1.SuspendLayout();
-            groupBox3.SuspendLayout();
-            menuStrip3.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -111,28 +112,30 @@
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             tabControl1.Location = new Point(0, 0);
+            tabControl1.Margin = new Padding(3, 4, 3, 4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1049, 709);
+            tabControl1.Size = new Size(1199, 945);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(groupBox3);
             tabPage1.Controls.Add(groupBox2);
-            tabPage1.Controls.Add(comboBox1);
-            tabPage1.Controls.Add(numericUpDown2);
-            tabPage1.Controls.Add(numericUpDown4);
-            tabPage1.Controls.Add(numericUpDown3);
-            tabPage1.Controls.Add(numericUpDown1);
-            tabPage1.Controls.Add(checkBox3);
-            tabPage1.Controls.Add(checkBox2);
-            tabPage1.Controls.Add(checkBox1);
-            tabPage1.Controls.Add(maskedTextBox2);
-            tabPage1.Controls.Add(maskedTextBox1);
-            tabPage1.Controls.Add(textBox3);
-            tabPage1.Controls.Add(textBox2);
-            tabPage1.Controls.Add(textBox1);
+            tabPage1.Controls.Add(RouterIP);
+            tabPage1.Controls.Add(UserMbps);
+            tabPage1.Controls.Add(EndPort);
+            tabPage1.Controls.Add(StartPort);
+            tabPage1.Controls.Add(AvailableMbps);
+            tabPage1.Controls.Add(CBInterfaceIP);
+            tabPage1.Controls.Add(LocalNetworkAccess);
+            tabPage1.Controls.Add(InternetAccess);
+            tabPage1.Controls.Add(InterfaceIP);
+            tabPage1.Controls.Add(IP);
+            tabPage1.Controls.Add(Tag);
+            tabPage1.Controls.Add(APIKey);
+            tabPage1.Controls.Add(UID);
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Controls.Add(label12);
             tabPage1.Controls.Add(label11);
@@ -147,21 +150,107 @@
             tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(label1);
             tabPage1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tabPage1.Location = new Point(4, 30);
+            tabPage1.Location = new Point(4, 37);
+            tabPage1.Margin = new Padding(3, 4, 3, 4);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1041, 675);
+            tabPage1.Padding = new Padding(3, 4, 3, 4);
+            tabPage1.Size = new Size(1191, 904);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Create New VPN";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(9, 813);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(235, 79);
+            button1.TabIndex = 20;
+            button1.Text = "Generate File";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(listBox2);
+            groupBox3.Controls.Add(menuStrip3);
+            groupBox3.Location = new Point(515, 13);
+            groupBox3.Margin = new Padding(3, 4, 3, 4);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new Padding(3, 4, 3, 4);
+            groupBox3.Size = new Size(667, 405);
+            groupBox3.TabIndex = 19;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "USERS";
+            // 
+            // listBox2
+            // 
+            listBox2.Dock = DockStyle.Fill;
+            listBox2.FormattingEnabled = true;
+            listBox2.ItemHeight = 28;
+            listBox2.Items.AddRange(new object[] { "6501ba548a32a75e4a309911/User-1" });
+            listBox2.Location = new Point(3, 64);
+            listBox2.Margin = new Padding(3, 4, 3, 4);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(661, 337);
+            listBox2.TabIndex = 1;
+            // 
+            // menuStrip3
+            // 
+            menuStrip3.ImageScalingSize = new Size(20, 20);
+            menuStrip3.Items.AddRange(new ToolStripItem[] { newUserToolStripMenuItem, Access_UID_TXT, toolStripMenuItem1, Access_Tag_TXT, users_insert_btn, users_delete_btn });
+            menuStrip3.Location = new Point(3, 31);
+            menuStrip3.Name = "menuStrip3";
+            menuStrip3.Padding = new Padding(7, 3, 0, 3);
+            menuStrip3.Size = new Size(661, 33);
+            menuStrip3.TabIndex = 0;
+            menuStrip3.Text = "menuStrip3";
+            // 
+            // newUserToolStripMenuItem
+            // 
+            newUserToolStripMenuItem.Name = "newUserToolStripMenuItem";
+            newUserToolStripMenuItem.Size = new Size(86, 27);
+            newUserToolStripMenuItem.Text = "New User";
+            // 
+            // Access_UID_TXT
+            // 
+            Access_UID_TXT.Name = "Access_UID_TXT";
+            Access_UID_TXT.Size = new Size(171, 27);
+            Access_UID_TXT.Text = "UID";
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(29, 27);
+            toolStripMenuItem1.Text = "/";
+            // 
+            // Access_Tag_TXT
+            // 
+            Access_Tag_TXT.Name = "Access_Tag_TXT";
+            Access_Tag_TXT.Size = new Size(114, 27);
+            Access_Tag_TXT.Text = "TAG";
+            // 
+            // users_insert_btn
+            // 
+            users_insert_btn.Name = "users_insert_btn";
+            users_insert_btn.Size = new Size(59, 27);
+            users_insert_btn.Text = "Insert";
+            // 
+            // users_delete_btn
+            // 
+            users_delete_btn.Name = "users_delete_btn";
+            users_delete_btn.Size = new Size(138, 27);
+            users_delete_btn.Text = "Remove Selected";
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(tabControl2);
             groupBox2.Controls.Add(menuStrip1);
-            groupBox2.Location = new Point(451, 319);
+            groupBox2.Location = new Point(515, 425);
+            groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(584, 348);
+            groupBox2.Padding = new Padding(3, 4, 3, 4);
+            groupBox2.Size = new Size(667, 464);
             groupBox2.TabIndex = 18;
             groupBox2.TabStop = false;
             groupBox2.Text = "DNS";
@@ -170,356 +259,394 @@
             // 
             tabControl2.Controls.Add(tabPage4);
             tabControl2.Dock = DockStyle.Fill;
-            tabControl2.Location = new Point(3, 49);
+            tabControl2.Location = new Point(3, 61);
+            tabControl2.Margin = new Padding(3, 4, 3, 4);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(578, 296);
+            tabControl2.Size = new Size(661, 399);
             tabControl2.TabIndex = 0;
             // 
             // tabPage4
             // 
             tabPage4.Controls.Add(listBox1);
             tabPage4.Controls.Add(menuStrip2);
-            tabPage4.Location = new Point(4, 30);
+            tabPage4.Location = new Point(4, 37);
+            tabPage4.Margin = new Padding(3, 4, 3, 4);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(570, 262);
+            tabPage4.Padding = new Padding(3, 4, 3, 4);
+            tabPage4.Size = new Size(653, 358);
             tabPage4.TabIndex = 0;
             tabPage4.Text = "example.com";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // listBox1
+            // 
+            listBox1.Dock = DockStyle.Fill;
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 28;
+            listBox1.Items.AddRange(new object[] { "Wildcard", "IP: {1.1.1.1}", "IP: {33.33.33.33}", "IP: {44.44.44.44}", "TXT: {Text record 1}", "TXT: {Text Record 2}", "TXT: {3rd text record}" });
+            listBox1.Location = new Point(3, 38);
+            listBox1.Margin = new Padding(3, 4, 3, 4);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(647, 316);
+            listBox1.TabIndex = 1;
+            // 
             // menuStrip2
             // 
+            menuStrip2.ImageScalingSize = new Size(20, 20);
             menuStrip2.Items.AddRange(new ToolStripItem[] { newToolStripMenuItem, toolStripComboBox1, toolStripTextBox1, insertItemToolStripMenuItem, removeSelectedToolStripMenuItem });
-            menuStrip2.Location = new Point(3, 3);
+            menuStrip2.Location = new Point(3, 4);
             menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(564, 27);
+            menuStrip2.Padding = new Padding(7, 3, 0, 3);
+            menuStrip2.Size = new Size(647, 34);
             menuStrip2.TabIndex = 0;
             menuStrip2.Text = "menuStrip2";
             // 
             // newToolStripMenuItem
             // 
             newToolStripMenuItem.Name = "newToolStripMenuItem";
-            newToolStripMenuItem.Size = new Size(46, 23);
+            newToolStripMenuItem.Size = new Size(56, 28);
             newToolStripMenuItem.Text = "New:";
             // 
             // toolStripComboBox1
             // 
             toolStripComboBox1.Items.AddRange(new object[] { "CNAME", "A", "TXT", "Wildcard" });
             toolStripComboBox1.Name = "toolStripComboBox1";
-            toolStripComboBox1.Size = new Size(121, 23);
+            toolStripComboBox1.Size = new Size(138, 28);
             toolStripComboBox1.Text = "CNAME";
             // 
             // toolStripTextBox1
             // 
             toolStripTextBox1.Name = "toolStripTextBox1";
-            toolStripTextBox1.Size = new Size(150, 23);
+            toolStripTextBox1.Size = new Size(171, 28);
             // 
             // insertItemToolStripMenuItem
             // 
             insertItemToolStripMenuItem.Name = "insertItemToolStripMenuItem";
-            insertItemToolStripMenuItem.Size = new Size(75, 23);
+            insertItemToolStripMenuItem.Size = new Size(93, 28);
             insertItemToolStripMenuItem.Text = "Insert Item";
             // 
             // removeSelectedToolStripMenuItem
             // 
             removeSelectedToolStripMenuItem.Name = "removeSelectedToolStripMenuItem";
-            removeSelectedToolStripMenuItem.Size = new Size(109, 23);
+            removeSelectedToolStripMenuItem.Size = new Size(138, 28);
             removeSelectedToolStripMenuItem.Text = "Remove Selected";
             // 
             // menuStrip1
             // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { newEntryToolStripMenuItem, removeCurrentTabToolStripMenuItem });
-            menuStrip1.Location = new Point(3, 25);
+            menuStrip1.Location = new Point(3, 31);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(578, 24);
+            menuStrip1.Padding = new Padding(7, 3, 0, 3);
+            menuStrip1.Size = new Size(661, 30);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // newEntryToolStripMenuItem
             // 
             newEntryToolStripMenuItem.Name = "newEntryToolStripMenuItem";
-            newEntryToolStripMenuItem.Size = new Size(73, 20);
+            newEntryToolStripMenuItem.Size = new Size(90, 24);
             newEntryToolStripMenuItem.Text = "New Entry";
             // 
             // removeCurrentTabToolStripMenuItem
             // 
             removeCurrentTabToolStripMenuItem.Name = "removeCurrentTabToolStripMenuItem";
-            removeCurrentTabToolStripMenuItem.Size = new Size(126, 20);
+            removeCurrentTabToolStripMenuItem.Size = new Size(156, 24);
             removeCurrentTabToolStripMenuItem.Text = "Remove Current Tab";
             // 
-            // comboBox1
+            // RouterIP
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(181, 319);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(264, 29);
-            comboBox1.TabIndex = 17;
+            RouterIP.FormattingEnabled = true;
+            RouterIP.Location = new Point(207, 387);
+            RouterIP.Margin = new Padding(3, 4, 3, 4);
+            RouterIP.Name = "RouterIP";
+            RouterIP.Size = new Size(301, 36);
+            RouterIP.TabIndex = 17;
             // 
-            // numericUpDown2
+            // UserMbps
             // 
-            numericUpDown2.Location = new Point(181, 247);
-            numericUpDown2.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(79, 29);
-            numericUpDown2.TabIndex = 16;
-            numericUpDown2.Value = new decimal(new int[] { 1000, 0, 0, 0 });
+            UserMbps.Location = new Point(207, 303);
+            UserMbps.Margin = new Padding(3, 4, 3, 4);
+            UserMbps.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            UserMbps.Name = "UserMbps";
+            UserMbps.Size = new Size(90, 34);
+            UserMbps.TabIndex = 16;
+            UserMbps.Value = new decimal(new int[] { 1000, 0, 0, 0 });
             // 
-            // numericUpDown4
+            // EndPort
             // 
-            numericUpDown4.Location = new Point(366, 363);
-            numericUpDown4.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            numericUpDown4.Name = "numericUpDown4";
-            numericUpDown4.Size = new Size(79, 29);
-            numericUpDown4.TabIndex = 16;
-            numericUpDown4.Value = new decimal(new int[] { 1000, 0, 0, 0 });
+            EndPort.Location = new Point(419, 431);
+            EndPort.Margin = new Padding(3, 4, 3, 4);
+            EndPort.Maximum = new decimal(new int[] { 65535, 0, 0, 0 });
+            EndPort.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            EndPort.Name = "EndPort";
+            EndPort.Size = new Size(90, 34);
+            EndPort.TabIndex = 16;
+            EndPort.Value = new decimal(new int[] { 62000, 0, 0, 0 });
             // 
-            // numericUpDown3
+            // StartPort
             // 
-            numericUpDown3.Location = new Point(181, 363);
-            numericUpDown3.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            numericUpDown3.Name = "numericUpDown3";
-            numericUpDown3.Size = new Size(79, 29);
-            numericUpDown3.TabIndex = 16;
-            numericUpDown3.Value = new decimal(new int[] { 1000, 0, 0, 0 });
+            StartPort.Location = new Point(207, 431);
+            StartPort.Margin = new Padding(3, 4, 3, 4);
+            StartPort.Maximum = new decimal(new int[] { 65535, 0, 0, 0 });
+            StartPort.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            StartPort.Name = "StartPort";
+            StartPort.Size = new Size(90, 34);
+            StartPort.TabIndex = 16;
+            StartPort.Value = new decimal(new int[] { 2000, 0, 0, 0 });
             // 
-            // numericUpDown1
+            // AvailableMbps
             // 
-            numericUpDown1.Location = new Point(181, 212);
-            numericUpDown1.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(79, 29);
-            numericUpDown1.TabIndex = 16;
-            numericUpDown1.Value = new decimal(new int[] { 1000, 0, 0, 0 });
+            AvailableMbps.Location = new Point(207, 261);
+            AvailableMbps.Margin = new Padding(3, 4, 3, 4);
+            AvailableMbps.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            AvailableMbps.Name = "AvailableMbps";
+            AvailableMbps.Size = new Size(90, 34);
+            AvailableMbps.TabIndex = 16;
+            AvailableMbps.Value = new decimal(new int[] { 1000, 0, 0, 0 });
             // 
-            // checkBox3
+            // CBInterfaceIP
             // 
-            checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(304, 287);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(104, 25);
-            checkBox3.TabIndex = 15;
-            checkBox3.Text = "Same as IP";
-            checkBox3.UseVisualStyleBackColor = true;
+            CBInterfaceIP.AutoSize = true;
+            CBInterfaceIP.Location = new Point(382, 344);
+            CBInterfaceIP.Margin = new Padding(3, 4, 3, 4);
+            CBInterfaceIP.Name = "CBInterfaceIP";
+            CBInterfaceIP.Size = new Size(126, 32);
+            CBInterfaceIP.TabIndex = 15;
+            CBInterfaceIP.Text = "Same as IP";
+            CBInterfaceIP.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // LocalNetworkAccess
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(181, 181);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(52, 25);
-            checkBox2.TabIndex = 15;
-            checkBox2.Text = "Yes";
-            checkBox2.UseVisualStyleBackColor = true;
+            LocalNetworkAccess.AutoSize = true;
+            LocalNetworkAccess.Location = new Point(207, 221);
+            LocalNetworkAccess.Margin = new Padding(3, 4, 3, 4);
+            LocalNetworkAccess.Name = "LocalNetworkAccess";
+            LocalNetworkAccess.Size = new Size(61, 32);
+            LocalNetworkAccess.TabIndex = 15;
+            LocalNetworkAccess.Text = "Yes";
+            LocalNetworkAccess.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // InternetAccess
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(181, 150);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(52, 25);
-            checkBox1.TabIndex = 15;
-            checkBox1.Text = "Yes";
-            checkBox1.UseVisualStyleBackColor = true;
+            InternetAccess.AutoSize = true;
+            InternetAccess.Location = new Point(207, 181);
+            InternetAccess.Margin = new Padding(3, 4, 3, 4);
+            InternetAccess.Name = "InternetAccess";
+            InternetAccess.Size = new Size(61, 32);
+            InternetAccess.TabIndex = 15;
+            InternetAccess.Text = "Yes";
+            InternetAccess.UseVisualStyleBackColor = true;
             // 
-            // maskedTextBox2
+            // InterfaceIP
             // 
-            maskedTextBox2.Location = new Point(181, 285);
-            maskedTextBox2.Mask = "000.000.000.000";
-            maskedTextBox2.Name = "maskedTextBox2";
-            maskedTextBox2.Size = new Size(117, 29);
-            maskedTextBox2.TabIndex = 14;
+            InterfaceIP.Location = new Point(207, 345);
+            InterfaceIP.Margin = new Padding(3, 4, 3, 4);
+            InterfaceIP.Mask = "000.000.000.000";
+            InterfaceIP.Name = "InterfaceIP";
+            InterfaceIP.Size = new Size(169, 34);
+            InterfaceIP.TabIndex = 14;
             // 
-            // maskedTextBox1
+            // IP
             // 
-            maskedTextBox1.Location = new Point(181, 80);
-            maskedTextBox1.Mask = "000.000.000.000";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(117, 29);
-            maskedTextBox1.TabIndex = 14;
+            IP.Location = new Point(207, 97);
+            IP.Margin = new Padding(3, 4, 3, 4);
+            IP.Mask = "000.000.000.000";
+            IP.Name = "IP";
+            IP.Size = new Size(169, 34);
+            IP.TabIndex = 14;
             // 
-            // textBox3
+            // Tag
             // 
-            textBox3.Location = new Point(181, 115);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(264, 29);
-            textBox3.TabIndex = 13;
+            Tag.Location = new Point(207, 139);
+            Tag.Margin = new Padding(3, 4, 3, 4);
+            Tag.Name = "Tag";
+            Tag.Size = new Size(301, 34);
+            Tag.TabIndex = 13;
             // 
-            // textBox2
+            // APIKey
             // 
-            textBox2.Location = new Point(181, 45);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(264, 29);
-            textBox2.TabIndex = 13;
+            APIKey.Location = new Point(207, 55);
+            APIKey.Margin = new Padding(3, 4, 3, 4);
+            APIKey.Name = "APIKey";
+            APIKey.Size = new Size(301, 34);
+            APIKey.TabIndex = 13;
             // 
-            // textBox1
+            // UID
             // 
-            textBox1.Location = new Point(181, 10);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(264, 29);
-            textBox1.TabIndex = 13;
+            UID.Location = new Point(207, 13);
+            UID.Margin = new Padding(3, 4, 3, 4);
+            UID.Name = "UID";
+            UID.Size = new Size(301, 34);
+            UID.TabIndex = 13;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(maskedTextBox4);
-            groupBox1.Controls.Add(maskedTextBox3);
+            groupBox1.Controls.Add(NAT_Network);
+            groupBox1.Controls.Add(NAT_Nat);
             groupBox1.Controls.Add(label15);
             groupBox1.Controls.Add(label14);
             groupBox1.Controls.Add(label13);
-            groupBox1.Controls.Add(textBox4);
-            groupBox1.Location = new Point(32, 413);
+            groupBox1.Controls.Add(NAT_Tag);
+            groupBox1.Location = new Point(37, 551);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(328, 137);
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(375, 167);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "NAT Settings";
             // 
-            // maskedTextBox4
+            // NAT_Network
             // 
-            maskedTextBox4.Location = new Point(102, 92);
-            maskedTextBox4.Mask = "000.000.000.000/00";
-            maskedTextBox4.Name = "maskedTextBox4";
-            maskedTextBox4.Size = new Size(211, 29);
-            maskedTextBox4.TabIndex = 14;
+            NAT_Network.Location = new Point(117, 111);
+            NAT_Network.Margin = new Padding(3, 4, 3, 4);
+            NAT_Network.Mask = "000.000.000.000/00";
+            NAT_Network.Name = "NAT_Network";
+            NAT_Network.Size = new Size(241, 34);
+            NAT_Network.TabIndex = 14;
             // 
-            // maskedTextBox3
+            // NAT_Nat
             // 
-            maskedTextBox3.Location = new Point(102, 57);
-            maskedTextBox3.Mask = "000.000.000.000/00";
-            maskedTextBox3.Name = "maskedTextBox3";
-            maskedTextBox3.Size = new Size(211, 29);
-            maskedTextBox3.TabIndex = 14;
+            NAT_Nat.Location = new Point(117, 69);
+            NAT_Nat.Margin = new Padding(3, 4, 3, 4);
+            NAT_Nat.Mask = "000.000.000.000/00";
+            NAT_Nat.Name = "NAT_Nat";
+            NAT_Nat.Size = new Size(241, 34);
+            NAT_Nat.TabIndex = 14;
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(57, 60);
+            label15.Location = new Point(60, 72);
             label15.Name = "label15";
-            label15.Size = new Size(42, 21);
+            label15.Size = new Size(53, 28);
             label15.TabIndex = 2;
             label15.Text = "Nat: ";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(22, 95);
+            label14.Location = new Point(17, 114);
             label14.Name = "label14";
-            label14.Size = new Size(77, 21);
+            label14.Size = new Size(96, 28);
             label14.TabIndex = 1;
             label14.Text = "Network: ";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(59, 25);
+            label13.Location = new Point(60, 30);
             label13.Name = "label13";
-            label13.Size = new Size(40, 21);
+            label13.Size = new Size(51, 28);
             label13.TabIndex = 0;
             label13.Text = "Tag: ";
             // 
-            // textBox4
+            // NAT_Tag
             // 
-            textBox4.Location = new Point(102, 22);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(211, 29);
-            textBox4.TabIndex = 13;
+            NAT_Tag.Location = new Point(117, 27);
+            NAT_Tag.Margin = new Padding(3, 4, 3, 4);
+            NAT_Tag.Name = "NAT_Tag";
+            NAT_Tag.Size = new Size(241, 34);
+            NAT_Tag.TabIndex = 13;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(285, 365);
+            label12.Location = new Point(318, 433);
             label12.Name = "label12";
-            label12.Size = new Size(75, 21);
+            label12.Size = new Size(95, 28);
             label12.TabIndex = 11;
             label12.Text = "End Port: ";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(94, 365);
+            label11.Location = new Point(104, 433);
             label11.Name = "label11";
-            label11.Size = new Size(81, 21);
+            label11.Size = new Size(103, 28);
             label11.TabIndex = 10;
             label11.Text = "Start Port: ";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(94, 322);
+            label10.Location = new Point(110, 390);
             label10.Name = "label10";
-            label10.Size = new Size(81, 21);
+            label10.Size = new Size(100, 28);
             label10.TabIndex = 9;
             label10.Text = "Router IP: ";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(81, 288);
+            label9.Location = new Point(93, 348);
             label9.Name = "label9";
-            label9.Size = new Size(94, 21);
+            label9.Size = new Size(117, 28);
             label9.TabIndex = 8;
             label9.Text = "Interface IP: ";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(85, 249);
+            label8.Location = new Point(92, 305);
             label8.Name = "label8";
-            label8.Size = new Size(92, 21);
+            label8.Size = new Size(115, 28);
             label8.TabIndex = 7;
             label8.Text = "User Mbps: ";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(54, 214);
+            label6.Location = new Point(51, 263);
             label6.Name = "label6";
-            label6.Size = new Size(123, 21);
+            label6.Size = new Size(156, 28);
             label6.TabIndex = 6;
             label6.Text = "Available Mbps: ";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(8, 182);
+            label7.Location = new Point(2, 221);
             label7.Name = "label7";
-            label7.Size = new Size(167, 21);
+            label7.Size = new Size(208, 28);
             label7.TabIndex = 5;
             label7.Text = "Local Network Access: ";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(54, 151);
+            label5.Location = new Point(59, 182);
             label5.Name = "label5";
-            label5.Size = new Size(121, 21);
+            label5.Size = new Size(151, 28);
             label5.TabIndex = 4;
             label5.Text = "Internet Access: ";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(81, 118);
+            label4.Location = new Point(91, 142);
             label4.Name = "label4";
-            label4.Size = new Size(94, 21);
+            label4.Size = new Size(116, 28);
             label4.TabIndex = 3;
             label4.Text = "VPN Name: ";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(145, 83);
+            label3.Location = new Point(173, 100);
             label3.Name = "label3";
-            label3.Size = new Size(30, 21);
+            label3.Size = new Size(37, 28);
             label3.TabIndex = 2;
             label3.Text = "IP: ";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(106, 48);
+            label2.Location = new Point(123, 58);
             label2.Name = "label2";
-            label2.Size = new Size(69, 21);
+            label2.Size = new Size(87, 28);
             label2.TabIndex = 1;
             label2.Text = "API Key: ";
             // 
@@ -527,123 +654,52 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(83, 13);
+            label1.Location = new Point(93, 16);
             label1.Name = "label1";
-            label1.Size = new Size(92, 21);
+            label1.Size = new Size(117, 28);
             label1.TabIndex = 0;
             label1.Text = "Account ID: ";
             // 
             // tabPage2
             // 
-            tabPage2.Location = new Point(4, 30);
+            tabPage2.Location = new Point(4, 37);
+            tabPage2.Margin = new Padding(3, 4, 3, 4);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1041, 675);
+            tabPage2.Padding = new Padding(3, 4, 3, 4);
+            tabPage2.Size = new Size(1191, 904);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Updating VPN";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
-            tabPage3.Location = new Point(4, 30);
+            tabPage3.Location = new Point(4, 37);
+            tabPage3.Margin = new Padding(3, 4, 3, 4);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1041, 675);
+            tabPage3.Padding = new Padding(3, 4, 3, 4);
+            tabPage3.Size = new Size(1191, 904);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Delete VPN";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // listBox1
-            // 
-            listBox1.Dock = DockStyle.Fill;
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 21;
-            listBox1.Items.AddRange(new object[] { "Wildcard", "IP: {1.1.1.1}", "IP: {33.33.33.33}", "IP: {44.44.44.44}", "TXT: {Text record 1}", "TXT: {Text Record 2}", "TXT: {3rd text record}" });
-            listBox1.Location = new Point(3, 30);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(564, 229);
-            listBox1.TabIndex = 1;
-            // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(listBox2);
-            groupBox3.Controls.Add(menuStrip3);
-            groupBox3.Location = new Point(451, 10);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(584, 304);
-            groupBox3.TabIndex = 19;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "USERS";
-            // 
-            // menuStrip3
-            // 
-            menuStrip3.Items.AddRange(new ToolStripItem[] { newUserToolStripMenuItem, toolStripTextBox2, toolStripMenuItem1, toolStripTextBox3, insertToolStripMenuItem, removeSelectedToolStripMenuItem1 });
-            menuStrip3.Location = new Point(3, 25);
-            menuStrip3.Name = "menuStrip3";
-            menuStrip3.Size = new Size(578, 27);
-            menuStrip3.TabIndex = 0;
-            menuStrip3.Text = "menuStrip3";
-            // 
-            // newUserToolStripMenuItem
-            // 
-            newUserToolStripMenuItem.Name = "newUserToolStripMenuItem";
-            newUserToolStripMenuItem.Size = new Size(69, 23);
-            newUserToolStripMenuItem.Text = "New User";
-            // 
-            // toolStripTextBox2
-            // 
-            toolStripTextBox2.Name = "toolStripTextBox2";
-            toolStripTextBox2.Size = new Size(150, 23);
-            toolStripTextBox2.Text = "UID";
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(24, 23);
-            toolStripMenuItem1.Text = "/";
-            // 
-            // toolStripTextBox3
-            // 
-            toolStripTextBox3.Name = "toolStripTextBox3";
-            toolStripTextBox3.Size = new Size(100, 23);
-            toolStripTextBox3.Text = "TAG";
-            // 
-            // insertToolStripMenuItem
-            // 
-            insertToolStripMenuItem.Name = "insertToolStripMenuItem";
-            insertToolStripMenuItem.Size = new Size(48, 23);
-            insertToolStripMenuItem.Text = "Insert";
-            // 
-            // removeSelectedToolStripMenuItem1
-            // 
-            removeSelectedToolStripMenuItem1.Name = "removeSelectedToolStripMenuItem1";
-            removeSelectedToolStripMenuItem1.Size = new Size(109, 23);
-            removeSelectedToolStripMenuItem1.Text = "Remove Selected";
-            // 
-            // listBox2
-            // 
-            listBox2.Dock = DockStyle.Fill;
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 21;
-            listBox2.Items.AddRange(new object[] { "6501ba548a32a75e4a309911/User-1" });
-            listBox2.Location = new Point(3, 52);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(578, 249);
-            listBox2.TabIndex = 1;
-            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1049, 709);
+            ClientSize = new Size(1199, 945);
             Controls.Add(tabControl1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip3;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Niceland VPN - Self Hosted VPN Configuration Tool";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            menuStrip3.ResumeLayout(false);
+            menuStrip3.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             tabControl2.ResumeLayout(false);
@@ -653,16 +709,12 @@
             menuStrip2.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)UserMbps).EndInit();
+            ((System.ComponentModel.ISupportInitialize)EndPort).EndInit();
+            ((System.ComponentModel.ISupportInitialize)StartPort).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AvailableMbps).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            menuStrip3.ResumeLayout(false);
-            menuStrip3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -688,22 +740,22 @@
         private Label label15;
         private Label label14;
         private Label label13;
-        private MaskedTextBox maskedTextBox1;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private CheckBox checkBox1;
-        private TextBox textBox3;
-        private CheckBox checkBox2;
-        private NumericUpDown numericUpDown1;
-        private NumericUpDown numericUpDown2;
-        private MaskedTextBox maskedTextBox2;
-        private CheckBox checkBox3;
-        private ComboBox comboBox1;
-        private NumericUpDown numericUpDown3;
-        private NumericUpDown numericUpDown4;
-        private MaskedTextBox maskedTextBox4;
-        private MaskedTextBox maskedTextBox3;
-        private TextBox textBox4;
+        private MaskedTextBox IP;
+        private TextBox APIKey;
+        private TextBox UID;
+        private CheckBox InternetAccess;
+        private TextBox Tag;
+        private CheckBox LocalNetworkAccess;
+        private NumericUpDown AvailableMbps;
+        private NumericUpDown UserMbps;
+        private MaskedTextBox InterfaceIP;
+        private CheckBox CBInterfaceIP;
+        private ComboBox RouterIP;
+        private NumericUpDown StartPort;
+        private NumericUpDown EndPort;
+        private MaskedTextBox NAT_Network;
+        private MaskedTextBox NAT_Nat;
+        private TextBox NAT_Tag;
         private GroupBox groupBox2;
         private TabControl tabControl2;
         private TabPage tabPage4;
@@ -721,10 +773,11 @@
         private ListBox listBox2;
         private MenuStrip menuStrip3;
         private ToolStripMenuItem newUserToolStripMenuItem;
-        private ToolStripTextBox toolStripTextBox2;
+        private ToolStripTextBox Access_UID_TXT;
         private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripTextBox toolStripTextBox3;
-        private ToolStripMenuItem insertToolStripMenuItem;
-        private ToolStripMenuItem removeSelectedToolStripMenuItem1;
+        private ToolStripTextBox Access_Tag_TXT;
+        private ToolStripMenuItem users_insert_btn;
+        private ToolStripMenuItem users_delete_btn;
+        private Button button1;
     }
 }
