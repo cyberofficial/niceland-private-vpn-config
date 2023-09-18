@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             groupBox2 = new GroupBox();
@@ -636,6 +637,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1049, 709);
             Controls.Add(tabControl1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip3;
             Name = "Form1";
             Text = "Niceland VPN - Self Hosted VPN Configuration Tool";
