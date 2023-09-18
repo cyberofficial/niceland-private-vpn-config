@@ -693,6 +693,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Niceland VPN - Self Hosted VPN Configuration Tool";
+            Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
