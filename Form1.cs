@@ -82,7 +82,7 @@ namespace niceland_private_vpn_config
             List<object> accessList = new();
 
             // Initialize the DNS Dictionary
-            Dictionary<string, Dictionary<string, object>> dnsDict = new Dictionary<string, Dictionary<string, object>>();
+            Dictionary<string, Dictionary<string, object>> dnsDict = new();
 
             // Create a NAT object
             var natObject = new
@@ -119,7 +119,7 @@ namespace niceland_private_vpn_config
             foreach (TabPage tabPage in DomainTabs.TabPages)
             {
                 string domainName = tabPage.Text;
-                Dictionary<string, object> recordDict = new Dictionary<string, object>();
+                Dictionary<string, object> recordDict = new();
 
                 // Get the ListBox control from the current TabPage
                 ListBox DomainRecordsList = (ListBox)tabPage.Controls[0];
@@ -225,7 +225,7 @@ namespace niceland_private_vpn_config
             DomainTabs.TabPages.Add(txtDomainName.Text);
             // create a new "DomainRecordsList" [ListBox] and add it to the new tab
             ListBox DomainRecordsList = new();
-            DomainTabs.TabPages[DomainTabs.TabPages.Count - 1].Controls.Add(DomainRecordsList);
+            DomainTabs.TabPages[^1].Controls.Add(DomainRecordsList);
             // make the dock style fill
             DomainRecordsList.Dock = DockStyle.Fill;
         }
@@ -234,10 +234,14 @@ namespace niceland_private_vpn_config
         {
             // Remove the current selected tab from the tab control "DomainTabs" if there is more than 1 tab
             if (DomainTabs.TabPages.Count > 1)
+            {
                 DomainTabs.TabPages.Remove(DomainTabs.SelectedTab);
+            }
             else
+            {
                 // if there is only 1 tab then show a message box and return
                 _ = MessageBox.Show("You can't remove the last tab");
+            }
         }
 
         private void insertItemToolStripMenuItem_Click(object sender, EventArgs e)
@@ -255,15 +259,24 @@ namespace niceland_private_vpn_config
                 // add the new item to the DomainRecordsList 
                 // if RecordType is Wildcard then just add the RecordType and not the RecordValue
                 if (RecordType.Text == "Wildcard")
+                {
                     // if wildcard already exists then skip
                     if (DomainRecordsList.Items.Contains("Wildcard"))
+                    {
                         return;
+                    }
                     else
+                    {
                         _ = DomainRecordsList.Items.Add(RecordType.Text);
+                    }
+                }
                 else
+                {
                     _ = DomainRecordsList.Items.Add(RecordType.Text + ": {" + RecordValue.Text + "}");
+                }
             }
-            catch {
+            catch
+            {
                 // if something goes wrong then do nothing and return.
                 return;
             }
@@ -286,7 +299,7 @@ namespace niceland_private_vpn_config
                 // nothing is selected then do nothing and return
                 return;
             }
-            
+
 
         }
     }
