@@ -13,32 +13,14 @@ namespace niceland_private_vpn_config
             InitializeComponent();
         }
 
-        private async void Form1_Load(object sender, EventArgs e)
+
+        // Code is documented with generilized comments to make it easier to understand
+
+
+        private void Form1_Load(object sender, EventArgs e)
         {
             //  make RouterIP read only
             RouterIP.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            HttpClient httpClient = new();
-
-            try
-            {
-                // Download the list from the URL
-                string content = await httpClient.GetStringAsync("https://raw.githubusercontent.com/tunnels-is/info/master/all");
-
-                // Split the content by lines
-                string[] lines = content.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
-
-                // Populate the ComboBox
-                foreach (string line in lines)
-                {
-                    RouterIP.Items.Add(line);
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle the exception (e.g., show a message box)
-                MessageBox.Show("An error occurred: " + ex.Message);
-            }
         }
 
         private async void RefreshRouterIP_Click(object sender, EventArgs e)
@@ -80,7 +62,6 @@ namespace niceland_private_vpn_config
             int availableMbps = (int)AvailableMbps.Value;
             int userMbps = (int)UserMbps.Value;
             string interfaceIP = InterfaceIP.Text.Replace(" ", "");
-            // for routerIP we'll need to remove the text before the comma and the comma itself
             string routerIP = string.Empty;
             try
             {
@@ -112,7 +93,7 @@ namespace niceland_private_vpn_config
             };
 
             // Populate accessList from user_list (assuming user_list is a ListBox)
-            foreach (string user in user_list.Items)  // Replace 'user_list.Items' with the actual source of your user list
+            foreach (string user in user_list.Items)
             {
                 string[] parts = user.Split('/');
                 if (parts.Length == 2)
@@ -133,7 +114,7 @@ namespace niceland_private_vpn_config
             // Add the NAT object to the list
             natList.Add(natObject);
 
-            // Create a JSON object with the NAT section
+            // Create a JSON object
             var jsonObject = new
             {
                 UID = accountId,
@@ -148,7 +129,7 @@ namespace niceland_private_vpn_config
                 RouterIP = routerIP,
                 StartPort = startPort,
                 EndPort = endPort,
-                NAT = natList, // Add the NAT list to the JSON object
+                NAT = natList,
                 Access = accessList
             };
 
@@ -176,12 +157,13 @@ namespace niceland_private_vpn_config
 
         private void users_insert_btn_Click(object sender, EventArgs e)
         {
+            // Adds user to list
             user_list.Items.Add(Access_UID_TXT.Text + "/" + Access_Tag_TXT.Text);
         }
 
         private void users_delete_btn_Click(object sender, EventArgs e)
         {
-            // remove the selected item from the list
+            // Removes user from list
             user_list.Items.RemoveAt(user_list.SelectedIndex);
         }
     }
