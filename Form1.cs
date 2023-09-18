@@ -1,8 +1,5 @@
-using System;
-using System.Windows.Forms;
-using System.Net.Http;
 using Newtonsoft.Json;
-using System.IO;
+using System.Text.RegularExpressions;
 
 namespace niceland_private_vpn_config
 {
@@ -40,13 +37,13 @@ namespace niceland_private_vpn_config
                 // Populate the ComboBox
                 foreach (string line in lines)
                 {
-                    RouterIP.Items.Add(line);
+                    _ = RouterIP.Items.Add(line);
                 }
             }
             catch (Exception ex)
             {
                 // Handle the exception (e.g., show a message box)
-                MessageBox.Show("An error occurred: " + ex.Message);
+                _ = MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
 
@@ -62,7 +59,7 @@ namespace niceland_private_vpn_config
             int availableMbps = (int)AvailableMbps.Value;
             int userMbps = (int)UserMbps.Value;
             string interfaceIP = InterfaceIP.Text.Replace(" ", "");
-            string routerIP = string.Empty;
+            string routerIP;
             try
             {
                 // Attempt to extract the value from RouterIP.Text
@@ -71,7 +68,7 @@ namespace niceland_private_vpn_config
             catch (Exception ex)
             {
                 // Handle the exception (e.g., show a message box or log the error)
-                MessageBox.Show("An error occurred while extracting routerIP: " + ex.Message);
+                _ = MessageBox.Show("An error occurred while extracting routerIP: " + ex.Message + "\nUsing default value: 51.89.206.24");
                 // continue with the default value
                 routerIP = "51.89.206.24";
             }
@@ -79,10 +76,13 @@ namespace niceland_private_vpn_config
             int endPort = (int)EndPort.Value;
 
             // Create a list to hold NAT objects
-            List<object> natList = new List<object>();
+            List<object> natList = new();
 
             // Create a list to hold Access objects
-            List<object> accessList = new List<object>();
+            List<object> accessList = new();
+
+            // Initialize the DNS Dictionary
+            Dictionary<string, Dictionary<string, object>> dnsDict = new Dictionary<string, Dictionary<string, object>>();
 
             // Create a NAT object
             var natObject = new
@@ -114,6 +114,49 @@ namespace niceland_private_vpn_config
             // Add the NAT object to the list
             natList.Add(natObject);
 
+
+            // Loop through each tab in DomainTabs
+            foreach (TabPage tabPage in DomainTabs.TabPages)
+            {
+                string domainName = tabPage.Text;
+                Dictionary<string, object> recordDict = new Dictionary<string, object>();
+
+                // Get the ListBox control from the current TabPage
+                ListBox DomainRecordsList = (ListBox)tabPage.Controls[0];
+
+                // Loop through each item in DomainRecordsList
+                foreach (string record in DomainRecordsList.Items)
+                {
+                    if (record == "Wildcard")
+                    {
+                        recordDict["Wildcard"] = true;
+                        continue;
+                    }
+
+                    // Split the record by ': {' and '}'
+                    string[] parts = record.Split(new string[] { ": {", "}" }, StringSplitOptions.None);
+
+                    if (parts.Length >= 2)
+                    {
+                        string type = parts[0];  // Record type like "IP", "TXT" etc
+                        string value = parts[1]; // Record value
+
+                        // If the type already exists in recordDict, append the new value to the existing list
+                        if (recordDict.ContainsKey(type))
+                        {
+                            ((List<string>)recordDict[type]).Add(value);
+                        }
+                        else
+                        {
+                            // Create a new list with the current value and add it to the recordDict
+                            recordDict[type] = new List<string> { value };
+                        }
+                    }
+                }
+
+                dnsDict[domainName] = recordDict;
+            }
+
             // Create a JSON object
             var jsonObject = new
             {
@@ -123,14 +166,15 @@ namespace niceland_private_vpn_config
                 Tag = vpnname,
                 InternetAccess = internetAccess,
                 LocalNetworkAccess = localNetworkAccess,
-                availableMbps = availableMbps,
+                availableMbps,
                 UserMbps = userMbps,
                 InterfaceIP = interfaceIP,
                 RouterIP = routerIP,
                 StartPort = startPort,
                 EndPort = endPort,
                 NAT = natList,
-                Access = accessList
+                Access = accessList,
+                DNS = dnsDict
             };
 
             try
@@ -147,24 +191,103 @@ namespace niceland_private_vpn_config
                 // Write the formatted JSON string to a file
                 File.WriteAllText(filePath, jsonString);
 
-                MessageBox.Show("JSON file saved successfully!");
+                _ = MessageBox.Show("JSON file saved successfully!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                _ = MessageBox.Show("Error: " + ex.Message);
             }
         }
 
         private void users_insert_btn_Click(object sender, EventArgs e)
         {
             // Adds user to list
-            user_list.Items.Add(Access_UID_TXT.Text + "/" + Access_Tag_TXT.Text);
+            _ = user_list.Items.Add(Access_UID_TXT.Text + "/" + Access_Tag_TXT.Text);
         }
 
         private void users_delete_btn_Click(object sender, EventArgs e)
         {
             // Removes user from list
             user_list.Items.RemoveAt(user_list.SelectedIndex);
+        }
+
+        private void newEntryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // check to see if txtDomainName is a valid domain name like google.com or txt.google.com, etc
+            if (!Regex.IsMatch(txtDomainName.Text, @"^([a-zA-Z0-9][a-zA-Z0-9\-]{0,61}[a-zA-Z0-9]\.)+[a-zA-Z]{2,}$"))
+            {
+                // if it's not a valid domain name then show a message box and return
+                _ = MessageBox.Show("Invalid domain name");
+                return;
+            }
+
+            // Add a new tab to the tab control "DomainTabs" with the text from "txtDomainName"
+            DomainTabs.TabPages.Add(txtDomainName.Text);
+            // create a new "DomainRecordsList" [ListBox] and add it to the new tab
+            ListBox DomainRecordsList = new();
+            DomainTabs.TabPages[DomainTabs.TabPages.Count - 1].Controls.Add(DomainRecordsList);
+            // make the dock style fill
+            DomainRecordsList.Dock = DockStyle.Fill;
+        }
+
+        private void removeCurrentTabToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Remove the current selected tab from the tab control "DomainTabs" if there is more than 1 tab
+            if (DomainTabs.TabPages.Count > 1)
+                DomainTabs.TabPages.Remove(DomainTabs.SelectedTab);
+            else
+                // if there is only 1 tab then show a message box and return
+                _ = MessageBox.Show("You can't remove the last tab");
+        }
+
+        private void insertItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // With the current selected DomainTabs add a new item to the DomainRecordsList
+                // it'll be added to the current selected DomainRecordsList in the current selected DomainTabs
+                // well grab the text from "RecordType" and "RecordValue"
+                // it'll be in the format of "RecordType: {RecordValue}"
+
+                // get the current selected DomainRecordsList
+                ListBox DomainRecordsList = (ListBox)DomainTabs.SelectedTab.Controls[0];
+
+                // add the new item to the DomainRecordsList 
+                // if RecordType is Wildcard then just add the RecordType and not the RecordValue
+                if (RecordType.Text == "Wildcard")
+                    // if wildcard already exists then skip
+                    if (DomainRecordsList.Items.Contains("Wildcard"))
+                        return;
+                    else
+                        _ = DomainRecordsList.Items.Add(RecordType.Text);
+                else
+                    _ = DomainRecordsList.Items.Add(RecordType.Text + ": {" + RecordValue.Text + "}");
+            }
+            catch {
+                // if something goes wrong then do nothing and return.
+                return;
+            }
+
+        }
+
+        private void removeSelectedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // remove the selected item from the current selected DomainRecordsList
+                // get the current selected DomainRecordsList
+                ListBox DomainRecordsList = (ListBox)DomainTabs.SelectedTab.Controls[0];
+
+                // remove the selected item from the DomainRecordsList
+                DomainRecordsList.Items.RemoveAt(DomainRecordsList.SelectedIndex);
+            }
+            catch
+            {
+                // nothing is selected then do nothing and return
+                return;
+            }
+            
+
         }
     }
 }

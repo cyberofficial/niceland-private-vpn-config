@@ -43,13 +43,17 @@
             users_insert_btn = new ToolStripMenuItem();
             users_delete_btn = new ToolStripMenuItem();
             groupBox2 = new GroupBox();
-            menuStrip2 = new MenuStrip();
+            DomainTabs = new TabControl();
+            tabPage4 = new TabPage();
+            DomainRecordsList = new ListBox();
+            DomainRecordsMenuBar = new MenuStrip();
             newToolStripMenuItem = new ToolStripMenuItem();
-            toolStripComboBox1 = new ToolStripComboBox();
-            toolStripTextBox1 = new ToolStripTextBox();
+            RecordType = new ToolStripComboBox();
+            RecordValue = new ToolStripTextBox();
             insertItemToolStripMenuItem = new ToolStripMenuItem();
             removeSelectedToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
+            txtDomainName = new ToolStripTextBox();
             newEntryToolStripMenuItem = new ToolStripMenuItem();
             removeCurrentTabToolStripMenuItem = new ToolStripMenuItem();
             RouterIP = new ComboBox();
@@ -86,24 +90,20 @@
             label1 = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
-            txtDomainName = new ToolStripTextBox();
-            tabPage4 = new TabPage();
-            listBox1 = new ListBox();
-            tabControl2 = new TabControl();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox3.SuspendLayout();
             menuStrip3.SuspendLayout();
             groupBox2.SuspendLayout();
-            menuStrip2.SuspendLayout();
+            DomainTabs.SuspendLayout();
+            tabPage4.SuspendLayout();
+            DomainRecordsMenuBar.SuspendLayout();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)UserMbps).BeginInit();
             ((System.ComponentModel.ISupportInitialize)EndPort).BeginInit();
             ((System.ComponentModel.ISupportInitialize)StartPort).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AvailableMbps).BeginInit();
             groupBox1.SuspendLayout();
-            tabPage4.SuspendLayout();
-            tabControl2.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -261,7 +261,8 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(tabControl2);
+            groupBox2.Controls.Add(DomainTabs);
+            groupBox2.Controls.Add(DomainRecordsMenuBar);
             groupBox2.Controls.Add(menuStrip1);
             groupBox2.Location = new Point(515, 425);
             groupBox2.Margin = new Padding(3, 4, 3, 4);
@@ -272,16 +273,51 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "DNS";
             // 
-            // menuStrip2
+            // DomainTabs
             // 
-            menuStrip2.ImageScalingSize = new Size(20, 20);
-            menuStrip2.Items.AddRange(new ToolStripItem[] { newToolStripMenuItem, toolStripComboBox1, toolStripTextBox1, insertItemToolStripMenuItem, removeSelectedToolStripMenuItem });
-            menuStrip2.Location = new Point(3, 4);
-            menuStrip2.Name = "menuStrip2";
-            menuStrip2.Padding = new Padding(7, 3, 0, 3);
-            menuStrip2.Size = new Size(647, 34);
-            menuStrip2.TabIndex = 0;
-            menuStrip2.Text = "menuStrip2";
+            DomainTabs.Controls.Add(tabPage4);
+            DomainTabs.Dock = DockStyle.Fill;
+            DomainTabs.Location = new Point(3, 98);
+            DomainTabs.Margin = new Padding(3, 4, 3, 4);
+            DomainTabs.Name = "DomainTabs";
+            DomainTabs.SelectedIndex = 0;
+            DomainTabs.Size = new Size(661, 362);
+            DomainTabs.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(DomainRecordsList);
+            tabPage4.Location = new Point(4, 37);
+            tabPage4.Margin = new Padding(3, 4, 3, 4);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3, 4, 3, 4);
+            tabPage4.Size = new Size(653, 321);
+            tabPage4.TabIndex = 0;
+            tabPage4.Text = "example.com";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // DomainRecordsList
+            // 
+            DomainRecordsList.Dock = DockStyle.Fill;
+            DomainRecordsList.FormattingEnabled = true;
+            DomainRecordsList.ItemHeight = 28;
+            DomainRecordsList.Items.AddRange(new object[] { "Wildcard", "IP: {1.1.1.1}", "IP: {33.33.33.33}", "IP: {44.44.44.44}", "TXT: {Text record 1}", "TXT: {Text Record 2}", "TXT: {3rd text record}" });
+            DomainRecordsList.Location = new Point(3, 4);
+            DomainRecordsList.Margin = new Padding(3, 4, 3, 4);
+            DomainRecordsList.Name = "DomainRecordsList";
+            DomainRecordsList.Size = new Size(647, 313);
+            DomainRecordsList.TabIndex = 1;
+            // 
+            // DomainRecordsMenuBar
+            // 
+            DomainRecordsMenuBar.ImageScalingSize = new Size(20, 20);
+            DomainRecordsMenuBar.Items.AddRange(new ToolStripItem[] { newToolStripMenuItem, RecordType, RecordValue, insertItemToolStripMenuItem, removeSelectedToolStripMenuItem });
+            DomainRecordsMenuBar.Location = new Point(3, 64);
+            DomainRecordsMenuBar.Name = "DomainRecordsMenuBar";
+            DomainRecordsMenuBar.Padding = new Padding(7, 3, 0, 3);
+            DomainRecordsMenuBar.Size = new Size(661, 34);
+            DomainRecordsMenuBar.TabIndex = 0;
+            DomainRecordsMenuBar.Text = "menuStrip2";
             // 
             // newToolStripMenuItem
             // 
@@ -289,34 +325,37 @@
             newToolStripMenuItem.Size = new Size(56, 28);
             newToolStripMenuItem.Text = "New:";
             // 
-            // toolStripComboBox1
+            // RecordType
             // 
-            toolStripComboBox1.Items.AddRange(new object[] { "CNAME", "A", "TXT", "Wildcard" });
-            toolStripComboBox1.Name = "toolStripComboBox1";
-            toolStripComboBox1.Size = new Size(138, 28);
-            toolStripComboBox1.Text = "CNAME";
+            RecordType.DropDownStyle = ComboBoxStyle.DropDownList;
+            RecordType.Items.AddRange(new object[] { "CNAME", "A", "TXT", "Wildcard" });
+            RecordType.Name = "RecordType";
+            RecordType.Size = new Size(90, 28);
             // 
-            // toolStripTextBox1
+            // RecordValue
             // 
-            toolStripTextBox1.Name = "toolStripTextBox1";
-            toolStripTextBox1.Size = new Size(171, 28);
+            RecordValue.Name = "RecordValue";
+            RecordValue.Size = new Size(171, 28);
+            RecordValue.Text = "value here";
             // 
             // insertItemToolStripMenuItem
             // 
             insertItemToolStripMenuItem.Name = "insertItemToolStripMenuItem";
             insertItemToolStripMenuItem.Size = new Size(93, 28);
             insertItemToolStripMenuItem.Text = "Insert Item";
+            insertItemToolStripMenuItem.Click += insertItemToolStripMenuItem_Click;
             // 
             // removeSelectedToolStripMenuItem
             // 
             removeSelectedToolStripMenuItem.Name = "removeSelectedToolStripMenuItem";
             removeSelectedToolStripMenuItem.Size = new Size(138, 28);
             removeSelectedToolStripMenuItem.Text = "Remove Selected";
+            removeSelectedToolStripMenuItem.Click += removeSelectedToolStripMenuItem_Click;
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { newEntryToolStripMenuItem, txtDomainName, removeCurrentTabToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { txtDomainName, newEntryToolStripMenuItem, removeCurrentTabToolStripMenuItem });
             menuStrip1.Location = new Point(3, 31);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 3, 0, 3);
@@ -324,17 +363,24 @@
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
+            // txtDomainName
+            // 
+            txtDomainName.Name = "txtDomainName";
+            txtDomainName.Size = new Size(175, 27);
+            // 
             // newEntryToolStripMenuItem
             // 
             newEntryToolStripMenuItem.Name = "newEntryToolStripMenuItem";
             newEntryToolStripMenuItem.Size = new Size(90, 27);
             newEntryToolStripMenuItem.Text = "New Entry";
+            newEntryToolStripMenuItem.Click += newEntryToolStripMenuItem_Click;
             // 
             // removeCurrentTabToolStripMenuItem
             // 
             removeCurrentTabToolStripMenuItem.Name = "removeCurrentTabToolStripMenuItem";
             removeCurrentTabToolStripMenuItem.Size = new Size(156, 27);
             removeCurrentTabToolStripMenuItem.Text = "Remove Current Tab";
+            removeCurrentTabToolStripMenuItem.Click += removeCurrentTabToolStripMenuItem_Click;
             // 
             // RouterIP
             // 
@@ -664,47 +710,6 @@
             tabPage3.Text = "Delete VPN";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // txtDomainName
-            // 
-            txtDomainName.Name = "txtDomainName";
-            txtDomainName.Size = new Size(125, 27);
-            // 
-            // tabPage4
-            // 
-            tabPage4.Controls.Add(listBox1);
-            tabPage4.Controls.Add(menuStrip2);
-            tabPage4.Location = new Point(4, 37);
-            tabPage4.Margin = new Padding(3, 4, 3, 4);
-            tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3, 4, 3, 4);
-            tabPage4.Size = new Size(653, 355);
-            tabPage4.TabIndex = 0;
-            tabPage4.Text = "example.com";
-            tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            listBox1.Dock = DockStyle.Fill;
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 28;
-            listBox1.Items.AddRange(new object[] { "Wildcard", "IP: {1.1.1.1}", "IP: {33.33.33.33}", "IP: {44.44.44.44}", "TXT: {Text record 1}", "TXT: {Text Record 2}", "TXT: {3rd text record}" });
-            listBox1.Location = new Point(3, 38);
-            listBox1.Margin = new Padding(3, 4, 3, 4);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(647, 313);
-            listBox1.TabIndex = 1;
-            // 
-            // tabControl2
-            // 
-            tabControl2.Controls.Add(tabPage4);
-            tabControl2.Dock = DockStyle.Fill;
-            tabControl2.Location = new Point(3, 64);
-            tabControl2.Margin = new Padding(3, 4, 3, 4);
-            tabControl2.Name = "tabControl2";
-            tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(661, 396);
-            tabControl2.TabIndex = 0;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -726,8 +731,10 @@
             menuStrip3.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            menuStrip2.ResumeLayout(false);
-            menuStrip2.PerformLayout();
+            DomainTabs.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
+            DomainRecordsMenuBar.ResumeLayout(false);
+            DomainRecordsMenuBar.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)UserMbps).EndInit();
@@ -736,9 +743,6 @@
             ((System.ComponentModel.ISupportInitialize)AvailableMbps).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            tabPage4.ResumeLayout(false);
-            tabPage4.PerformLayout();
-            tabControl2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -783,10 +787,10 @@
         private GroupBox groupBox2;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem newEntryToolStripMenuItem;
-        private MenuStrip menuStrip2;
+        private MenuStrip DomainRecordsMenuBar;
         private ToolStripMenuItem newToolStripMenuItem;
-        private ToolStripComboBox toolStripComboBox1;
-        private ToolStripTextBox toolStripTextBox1;
+        private ToolStripComboBox RecordType;
+        private ToolStripTextBox RecordValue;
         private ToolStripMenuItem insertItemToolStripMenuItem;
         private ToolStripMenuItem removeSelectedToolStripMenuItem;
         private ToolStripMenuItem removeCurrentTabToolStripMenuItem;
@@ -802,8 +806,8 @@
         private Button GenFileBtn;
         private Button RefreshRouterIP;
         private ToolStripTextBox txtDomainName;
-        private TabControl tabControl2;
+        private TabControl DomainTabs;
         private TabPage tabPage4;
-        private ListBox listBox1;
+        private ListBox DomainRecordsList;
     }
 }
