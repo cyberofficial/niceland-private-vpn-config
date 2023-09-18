@@ -200,8 +200,21 @@ namespace niceland_private_vpn_config
                 // open explorer to the file
                 if (AfterCreationCheckBox.Checked)
                 {
-                Process.Start("explorer.exe", "/select, \"" + filePath + "\"");
+                    Process.Start("explorer.exe", "/select, \"" + filePath + "\"");
                 }
+
+                // Update IpTablesTxt
+                // Show text: iptables -I OUTPUT 1 --src [InterfaceIP] -p tcp --tcp-flags RST RST -j DROP
+                IpTablesTxt.Text = "iptables -I OUTPUT 1 --src " + interfaceIP + " -p tcp --tcp-flags RST RST -j DROP";
+
+                // update sysctlconfigTXT with
+                // net.ipv6.conf.default.disable_ipv6=1
+                // net.ipv6.conf.all.disable_ipv6=1
+                // net.ipv4.ip_local_reserved_ports = [StartPort]-[EndPort]
+                // net.ipv4.ip_local_port_range = 1024 1999
+                sysctlconfigTXT.Text = "net.ipv6.conf.default.disable_ipv6=1\nnet.ipv6.conf.all.disable_ipv6=1\nnet.ipv4.ip_local_reserved_ports = " + startPort + "-" + endPort + "\nnet.ipv4.ip_local_port_range = 1024 1999";
+
+
             }
             catch (Exception ex)
             {
@@ -217,7 +230,11 @@ namespace niceland_private_vpn_config
 
         private void users_delete_btn_Click(object sender, EventArgs e)
         {
-            // Removes user from list
+            // Removes user from list if there is a selected item
+            if (user_list.SelectedIndex == -1)
+            {
+                return;
+            }
             user_list.Items.RemoveAt(user_list.SelectedIndex);
         }
 
@@ -267,6 +284,11 @@ namespace niceland_private_vpn_config
 
         private void insertItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // if RecordType is empty then return
+            if (RecordType.Text == "")
+            {
+                return;
+            }
             try
             {
                 // With the current selected DomainTabs add a new item to the DomainRecordsList
@@ -275,6 +297,11 @@ namespace niceland_private_vpn_config
                 // it'll be in the format of "RecordType: {RecordValue}"
 
                 // get the current selected DomainRecordsList
+                //if there is no selected tab then return
+                if (DomainTabs.TabPages.Count == 0)
+                {
+                    return;
+                }
                 ListBox DomainRecordsList = (ListBox)DomainTabs.SelectedTab.Controls[0];
 
                 // add the new item to the DomainRecordsList 
@@ -310,6 +337,10 @@ namespace niceland_private_vpn_config
             {
                 // remove the selected item from the current selected DomainRecordsList
                 // get the current selected DomainRecordsList
+                if (DomainTabs.TabPages.Count == 0)
+                {
+                    return;
+                }
                 ListBox DomainRecordsList = (ListBox)DomainTabs.SelectedTab.Controls[0];
 
                 // remove the selected item from the DomainRecordsList

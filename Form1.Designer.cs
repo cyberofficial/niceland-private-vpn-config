@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            groupBox4 = new GroupBox();
+            sysctlconfigTXT = new TextBox();
+            IpTablesTxt = new TextBox();
+            label17 = new Label();
+            label16 = new Label();
+            AfterCreationCheckBox = new CheckBox();
             RefreshRouterIP = new Button();
             GenFileBtn = new Button();
             groupBox3 = new GroupBox();
@@ -90,9 +96,9 @@
             label1 = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
-            AfterCreationCheckBox = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
             menuStrip3.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -118,11 +124,12 @@
             tabControl1.Margin = new Padding(3, 4, 3, 4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1199, 945);
+            tabControl1.Size = new Size(1199, 1086);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(groupBox4);
             tabPage1.Controls.Add(AfterCreationCheckBox);
             tabPage1.Controls.Add(RefreshRouterIP);
             tabPage1.Controls.Add(GenFileBtn);
@@ -159,10 +166,69 @@
             tabPage1.Margin = new Padding(3, 4, 3, 4);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3, 4, 3, 4);
-            tabPage1.Size = new Size(1191, 904);
+            tabPage1.Size = new Size(1191, 1045);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Create New VPN";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(sysctlconfigTXT);
+            groupBox4.Controls.Add(IpTablesTxt);
+            groupBox4.Controls.Add(label17);
+            groupBox4.Controls.Add(label16);
+            groupBox4.Location = new Point(8, 784);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(1177, 253);
+            groupBox4.TabIndex = 23;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Commands";
+            // 
+            // sysctlconfigTXT
+            // 
+            sysctlconfigTXT.Location = new Point(262, 76);
+            sysctlconfigTXT.Multiline = true;
+            sysctlconfigTXT.Name = "sysctlconfigTXT";
+            sysctlconfigTXT.ReadOnly = true;
+            sysctlconfigTXT.Size = new Size(505, 161);
+            sysctlconfigTXT.TabIndex = 1;
+            // 
+            // IpTablesTxt
+            // 
+            IpTablesTxt.Location = new Point(262, 36);
+            IpTablesTxt.Name = "IpTablesTxt";
+            IpTablesTxt.ReadOnly = true;
+            IpTablesTxt.Size = new Size(905, 34);
+            IpTablesTxt.TabIndex = 1;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(6, 85);
+            label17.Name = "label17";
+            label17.Size = new Size(250, 112);
+            label17.TabIndex = 0;
+            label17.Text = "2. Add this to sysctl config: \r\n[ /etc/sysctl.conf ]\r\n\r\nsave with: sysctl -p";
+            label17.TextAlign = ContentAlignment.TopRight;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(49, 42);
+            label16.Name = "label16";
+            label16.Size = new Size(211, 28);
+            label16.TabIndex = 0;
+            label16.Text = "1. IP Tables Command: ";
+            // 
+            // AfterCreationCheckBox
+            // 
+            AfterCreationCheckBox.AutoSize = true;
+            AfterCreationCheckBox.Location = new Point(133, 709);
+            AfterCreationCheckBox.Name = "AfterCreationCheckBox";
+            AfterCreationCheckBox.Size = new Size(315, 32);
+            AfterCreationCheckBox.TabIndex = 22;
+            AfterCreationCheckBox.Text = "Open to directory after creating.";
+            AfterCreationCheckBox.UseVisualStyleBackColor = true;
             // 
             // RefreshRouterIP
             // 
@@ -270,7 +336,7 @@
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(667, 464);
+            groupBox2.Size = new Size(667, 352);
             groupBox2.TabIndex = 18;
             groupBox2.TabStop = false;
             groupBox2.Text = "DNS";
@@ -283,7 +349,7 @@
             DomainTabs.Margin = new Padding(3, 4, 3, 4);
             DomainTabs.Name = "DomainTabs";
             DomainTabs.SelectedIndex = 0;
-            DomainTabs.Size = new Size(661, 362);
+            DomainTabs.Size = new Size(661, 250);
             DomainTabs.TabIndex = 0;
             // 
             // tabPage4
@@ -293,7 +359,7 @@
             tabPage4.Margin = new Padding(3, 4, 3, 4);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3, 4, 3, 4);
-            tabPage4.Size = new Size(653, 321);
+            tabPage4.Size = new Size(653, 209);
             tabPage4.TabIndex = 0;
             tabPage4.Text = "example.com";
             tabPage4.UseVisualStyleBackColor = true;
@@ -307,7 +373,7 @@
             DomainRecordsList.Location = new Point(3, 4);
             DomainRecordsList.Margin = new Padding(3, 4, 3, 4);
             DomainRecordsList.Name = "DomainRecordsList";
-            DomainRecordsList.Size = new Size(647, 313);
+            DomainRecordsList.Size = new Size(647, 201);
             DomainRecordsList.TabIndex = 1;
             // 
             // DomainRecordsMenuBar
@@ -704,7 +770,7 @@
             tabPage2.Margin = new Padding(3, 4, 3, 4);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3, 4, 3, 4);
-            tabPage2.Size = new Size(1191, 904);
+            tabPage2.Size = new Size(1191, 1045);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Updating VPN";
             tabPage2.UseVisualStyleBackColor = true;
@@ -715,26 +781,16 @@
             tabPage3.Margin = new Padding(3, 4, 3, 4);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3, 4, 3, 4);
-            tabPage3.Size = new Size(1191, 904);
+            tabPage3.Size = new Size(1191, 1045);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Delete VPN";
             tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // AfterCreationCheckBox
-            // 
-            AfterCreationCheckBox.AutoSize = true;
-            AfterCreationCheckBox.Location = new Point(133, 709);
-            AfterCreationCheckBox.Name = "AfterCreationCheckBox";
-            AfterCreationCheckBox.Size = new Size(315, 32);
-            AfterCreationCheckBox.TabIndex = 22;
-            AfterCreationCheckBox.Text = "Open to directory after creating.";
-            AfterCreationCheckBox.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1199, 945);
+            ClientSize = new Size(1199, 1086);
             Controls.Add(tabControl1);
             ForeColor = Color.Black;
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -749,6 +805,8 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             menuStrip3.ResumeLayout(false);
@@ -834,5 +892,10 @@
         private TabPage tabPage4;
         private ListBox DomainRecordsList;
         private CheckBox AfterCreationCheckBox;
+        private GroupBox groupBox4;
+        private TextBox IpTablesTxt;
+        private Label label16;
+        private Label label17;
+        private TextBox sysctlconfigTXT;
     }
 }
