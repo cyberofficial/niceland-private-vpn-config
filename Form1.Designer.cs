@@ -43,9 +43,6 @@
             users_insert_btn = new ToolStripMenuItem();
             users_delete_btn = new ToolStripMenuItem();
             groupBox2 = new GroupBox();
-            tabControl2 = new TabControl();
-            tabPage4 = new TabPage();
-            listBox1 = new ListBox();
             menuStrip2 = new MenuStrip();
             newToolStripMenuItem = new ToolStripMenuItem();
             toolStripComboBox1 = new ToolStripComboBox();
@@ -89,13 +86,15 @@
             label1 = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
+            txtDomainName = new ToolStripTextBox();
+            tabPage4 = new TabPage();
+            listBox1 = new ListBox();
+            tabControl2 = new TabControl();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox3.SuspendLayout();
             menuStrip3.SuspendLayout();
             groupBox2.SuspendLayout();
-            tabControl2.SuspendLayout();
-            tabPage4.SuspendLayout();
             menuStrip2.SuspendLayout();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)UserMbps).BeginInit();
@@ -103,6 +102,8 @@
             ((System.ComponentModel.ISupportInitialize)StartPort).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AvailableMbps).BeginInit();
             groupBox1.SuspendLayout();
+            tabPage4.SuspendLayout();
+            tabControl2.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -256,6 +257,7 @@
             users_delete_btn.Name = "users_delete_btn";
             users_delete_btn.Size = new Size(138, 27);
             users_delete_btn.Text = "Remove Selected";
+            users_delete_btn.Click += users_delete_btn_Click;
             // 
             // groupBox2
             // 
@@ -269,42 +271,6 @@
             groupBox2.TabIndex = 18;
             groupBox2.TabStop = false;
             groupBox2.Text = "DNS";
-            // 
-            // tabControl2
-            // 
-            tabControl2.Controls.Add(tabPage4);
-            tabControl2.Dock = DockStyle.Fill;
-            tabControl2.Location = new Point(3, 61);
-            tabControl2.Margin = new Padding(3, 4, 3, 4);
-            tabControl2.Name = "tabControl2";
-            tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(661, 399);
-            tabControl2.TabIndex = 0;
-            // 
-            // tabPage4
-            // 
-            tabPage4.Controls.Add(listBox1);
-            tabPage4.Controls.Add(menuStrip2);
-            tabPage4.Location = new Point(4, 37);
-            tabPage4.Margin = new Padding(3, 4, 3, 4);
-            tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3, 4, 3, 4);
-            tabPage4.Size = new Size(653, 358);
-            tabPage4.TabIndex = 0;
-            tabPage4.Text = "example.com";
-            tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            listBox1.Dock = DockStyle.Fill;
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 28;
-            listBox1.Items.AddRange(new object[] { "Wildcard", "IP: {1.1.1.1}", "IP: {33.33.33.33}", "IP: {44.44.44.44}", "TXT: {Text record 1}", "TXT: {Text Record 2}", "TXT: {3rd text record}" });
-            listBox1.Location = new Point(3, 38);
-            listBox1.Margin = new Padding(3, 4, 3, 4);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(647, 316);
-            listBox1.TabIndex = 1;
             // 
             // menuStrip2
             // 
@@ -350,24 +316,24 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { newEntryToolStripMenuItem, removeCurrentTabToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { newEntryToolStripMenuItem, txtDomainName, removeCurrentTabToolStripMenuItem });
             menuStrip1.Location = new Point(3, 31);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(661, 30);
+            menuStrip1.Size = new Size(661, 33);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // newEntryToolStripMenuItem
             // 
             newEntryToolStripMenuItem.Name = "newEntryToolStripMenuItem";
-            newEntryToolStripMenuItem.Size = new Size(90, 24);
+            newEntryToolStripMenuItem.Size = new Size(90, 27);
             newEntryToolStripMenuItem.Text = "New Entry";
             // 
             // removeCurrentTabToolStripMenuItem
             // 
             removeCurrentTabToolStripMenuItem.Name = "removeCurrentTabToolStripMenuItem";
-            removeCurrentTabToolStripMenuItem.Size = new Size(156, 24);
+            removeCurrentTabToolStripMenuItem.Size = new Size(156, 27);
             removeCurrentTabToolStripMenuItem.Text = "Remove Current Tab";
             // 
             // RouterIP
@@ -698,6 +664,47 @@
             tabPage3.Text = "Delete VPN";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // txtDomainName
+            // 
+            txtDomainName.Name = "txtDomainName";
+            txtDomainName.Size = new Size(125, 27);
+            // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(listBox1);
+            tabPage4.Controls.Add(menuStrip2);
+            tabPage4.Location = new Point(4, 37);
+            tabPage4.Margin = new Padding(3, 4, 3, 4);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3, 4, 3, 4);
+            tabPage4.Size = new Size(653, 355);
+            tabPage4.TabIndex = 0;
+            tabPage4.Text = "example.com";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            listBox1.Dock = DockStyle.Fill;
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 28;
+            listBox1.Items.AddRange(new object[] { "Wildcard", "IP: {1.1.1.1}", "IP: {33.33.33.33}", "IP: {44.44.44.44}", "TXT: {Text record 1}", "TXT: {Text Record 2}", "TXT: {3rd text record}" });
+            listBox1.Location = new Point(3, 38);
+            listBox1.Margin = new Padding(3, 4, 3, 4);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(647, 313);
+            listBox1.TabIndex = 1;
+            // 
+            // tabControl2
+            // 
+            tabControl2.Controls.Add(tabPage4);
+            tabControl2.Dock = DockStyle.Fill;
+            tabControl2.Location = new Point(3, 64);
+            tabControl2.Margin = new Padding(3, 4, 3, 4);
+            tabControl2.Name = "tabControl2";
+            tabControl2.SelectedIndex = 0;
+            tabControl2.Size = new Size(661, 396);
+            tabControl2.TabIndex = 0;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -719,9 +726,6 @@
             menuStrip3.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            tabControl2.ResumeLayout(false);
-            tabPage4.ResumeLayout(false);
-            tabPage4.PerformLayout();
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
             menuStrip1.ResumeLayout(false);
@@ -732,6 +736,9 @@
             ((System.ComponentModel.ISupportInitialize)AvailableMbps).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
+            tabControl2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -774,8 +781,6 @@
         private MaskedTextBox NAT_Nat;
         private TextBox NAT_Tag;
         private GroupBox groupBox2;
-        private TabControl tabControl2;
-        private TabPage tabPage4;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem newEntryToolStripMenuItem;
         private MenuStrip menuStrip2;
@@ -785,7 +790,6 @@
         private ToolStripMenuItem insertItemToolStripMenuItem;
         private ToolStripMenuItem removeSelectedToolStripMenuItem;
         private ToolStripMenuItem removeCurrentTabToolStripMenuItem;
-        private ListBox listBox1;
         private GroupBox groupBox3;
         private ListBox user_list;
         private MenuStrip menuStrip3;
@@ -797,5 +801,9 @@
         private ToolStripMenuItem users_delete_btn;
         private Button GenFileBtn;
         private Button RefreshRouterIP;
+        private ToolStripTextBox txtDomainName;
+        private TabControl tabControl2;
+        private TabPage tabPage4;
+        private ListBox listBox1;
     }
 }

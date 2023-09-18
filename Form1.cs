@@ -178,5 +178,11 @@ namespace niceland_private_vpn_config
         {
             user_list.Items.Add(Access_UID_TXT.Text + "/" + Access_Tag_TXT.Text);
         }
+
+        private void users_delete_btn_Click(object sender, EventArgs e)
+        {
+            // remove the selected item from the list
+            user_list.Items.RemoveAt(user_list.SelectedIndex);
+        }
     }
 }
