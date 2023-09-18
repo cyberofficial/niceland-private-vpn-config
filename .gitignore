@@ -1,15 +1,3 @@
 .vs
 [Bb]in/
 [Oo]bj/
-.vs/niceland-private-vpn-config/v17/.suo
-obj/Debug/net7.0-windows/niceland-private-vpn-config.assets.cache
-obj/Debug/net7.0-windows/niceland-private-vpn-config.csproj.CoreCompileInputs.cache
-obj/Debug/net7.0-windows/niceland-private-vpn-config.csproj.FileListAbsolute.txt
-obj/Debug/net7.0-windows/niceland-private-vpn-config.csproj.GenerateResource.cache
-obj/Debug/net7.0-windows/niceland-private-vpn-config.dll
-obj/Debug/net7.0-windows/niceland-private-vpn-config.pdb
-obj/Debug/net7.0-windows/ref/niceland-private-vpn-config.dll
-obj/Debug/net7.0-windows/refint/niceland-private-vpn-config.dll
-obj/niceland-private-vpn-config.csproj.nuget.dgspec.json
-obj/project.assets.json
-obj/project.nuget.cache
