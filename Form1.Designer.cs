@@ -34,7 +34,7 @@
             RefreshRouterIP = new Button();
             GenFileBtn = new Button();
             groupBox3 = new GroupBox();
-            listBox2 = new ListBox();
+            user_list = new ListBox();
             menuStrip3 = new MenuStrip();
             newUserToolStripMenuItem = new ToolStripMenuItem();
             Access_UID_TXT = new ToolStripTextBox();
@@ -186,7 +186,7 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(listBox2);
+            groupBox3.Controls.Add(user_list);
             groupBox3.Controls.Add(menuStrip3);
             groupBox3.Location = new Point(515, 13);
             groupBox3.Margin = new Padding(3, 4, 3, 4);
@@ -197,17 +197,17 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "USERS";
             // 
-            // listBox2
+            // user_list
             // 
-            listBox2.Dock = DockStyle.Fill;
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 28;
-            listBox2.Items.AddRange(new object[] { "6501ba548a32a75e4a309911/User-1" });
-            listBox2.Location = new Point(3, 64);
-            listBox2.Margin = new Padding(3, 4, 3, 4);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(661, 337);
-            listBox2.TabIndex = 1;
+            user_list.Dock = DockStyle.Fill;
+            user_list.FormattingEnabled = true;
+            user_list.ItemHeight = 28;
+            user_list.Items.AddRange(new object[] { "6501ba548a32a75e4a309911/User-1" });
+            user_list.Location = new Point(3, 64);
+            user_list.Margin = new Padding(3, 4, 3, 4);
+            user_list.Name = "user_list";
+            user_list.Size = new Size(661, 337);
+            user_list.TabIndex = 1;
             // 
             // menuStrip3
             // 
@@ -249,6 +249,7 @@
             users_insert_btn.Name = "users_insert_btn";
             users_insert_btn.Size = new Size(59, 27);
             users_insert_btn.Text = "Insert";
+            users_insert_btn.Click += users_insert_btn_Click;
             // 
             // users_delete_btn
             // 
@@ -786,7 +787,7 @@
         private ToolStripMenuItem removeCurrentTabToolStripMenuItem;
         private ListBox listBox1;
         private GroupBox groupBox3;
-        private ListBox listBox2;
+        private ListBox user_list;
         private MenuStrip menuStrip3;
         private ToolStripMenuItem newUserToolStripMenuItem;
         private ToolStripTextBox Access_UID_TXT;

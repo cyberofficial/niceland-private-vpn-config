@@ -100,6 +100,9 @@ namespace niceland_private_vpn_config
             // Create a list to hold NAT objects
             List<object> natList = new List<object>();
 
+            // Create a list to hold Access objects
+            List<object> accessList = new List<object>();
+
             // Create a NAT object
             var natObject = new
             {
@@ -107,6 +110,25 @@ namespace niceland_private_vpn_config
                 Network = NAT_Network.Text.Replace(" ", ""),
                 Nat = NAT_Nat.Text.Replace(" ", "")
             };
+
+            // Populate accessList from user_list (assuming user_list is a ListBox)
+            foreach (string user in user_list.Items)  // Replace 'user_list.Items' with the actual source of your user list
+            {
+                string[] parts = user.Split('/');
+                if (parts.Length == 2)
+                {
+                    string uid = parts[0];
+                    string tag = parts[1];
+
+                    var accessObject = new
+                    {
+                        UID = uid,
+                        Tag = tag
+                    };
+
+                    accessList.Add(accessObject);
+                }
+            }
 
             // Add the NAT object to the list
             natList.Add(natObject);
@@ -126,7 +148,8 @@ namespace niceland_private_vpn_config
                 RouterIP = routerIP,
                 StartPort = startPort,
                 EndPort = endPort,
-                NAT = natList // Add the NAT list to the JSON object
+                NAT = natList, // Add the NAT list to the JSON object
+                Access = accessList
             };
 
             try
@@ -151,5 +174,9 @@ namespace niceland_private_vpn_config
             }
         }
 
+        private void users_insert_btn_Click(object sender, EventArgs e)
+        {
+            user_list.Items.Add(Access_UID_TXT.Text + "/" + Access_Tag_TXT.Text);
+        }
     }
 }
