@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace niceland_private_vpn_config
@@ -185,13 +186,19 @@ namespace niceland_private_vpn_config
                 // Get the current executable directory
                 string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-                // Combine the directory and file name
-                string filePath = Path.Combine(exeDirectory, "config.json");
+                // create a folder if it doesnt exist called profiles
+                Directory.CreateDirectory(exeDirectory + "profiles");
+
+                // Combine the directory and file name and save into profiles
+                string filePath = Path.Combine(exeDirectory + "profiles", vpnname + ".json");
 
                 // Write the formatted JSON string to a file
                 File.WriteAllText(filePath, jsonString);
 
                 _ = MessageBox.Show("JSON file saved successfully!");
+
+                // open explorer to the file
+                Process.Start("explorer.exe", "/select, \"" + filePath + "\"");
             }
             catch (Exception ex)
             {

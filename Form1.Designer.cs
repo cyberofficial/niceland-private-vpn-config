@@ -176,10 +176,10 @@
             // GenFileBtn
             // 
             GenFileBtn.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            GenFileBtn.Location = new Point(9, 813);
+            GenFileBtn.Location = new Point(133, 648);
             GenFileBtn.Margin = new Padding(3, 4, 3, 4);
             GenFileBtn.Name = "GenFileBtn";
-            GenFileBtn.Size = new Size(235, 79);
+            GenFileBtn.Size = new Size(375, 54);
             GenFileBtn.TabIndex = 20;
             GenFileBtn.Text = "Generate File";
             GenFileBtn.UseVisualStyleBackColor = true;
@@ -189,7 +189,7 @@
             // 
             groupBox3.Controls.Add(user_list);
             groupBox3.Controls.Add(menuStrip3);
-            groupBox3.Location = new Point(515, 13);
+            groupBox3.Location = new Point(518, 13);
             groupBox3.Margin = new Padding(3, 4, 3, 4);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(3, 4, 3, 4);
@@ -301,7 +301,7 @@
             DomainRecordsList.Dock = DockStyle.Fill;
             DomainRecordsList.FormattingEnabled = true;
             DomainRecordsList.ItemHeight = 28;
-            DomainRecordsList.Items.AddRange(new object[] { "Wildcard", "IP: {1.1.1.1}", "IP: {33.33.33.33}", "IP: {44.44.44.44}", "TXT: {Text record 1}", "TXT: {Text Record 2}", "TXT: {3rd text record}" });
+            DomainRecordsList.Items.AddRange(new object[] { "CNAME: {meow.com}" });
             DomainRecordsList.Location = new Point(3, 4);
             DomainRecordsList.Margin = new Padding(3, 4, 3, 4);
             DomainRecordsList.Name = "DomainRecordsList";
@@ -400,7 +400,7 @@
             UserMbps.Name = "UserMbps";
             UserMbps.Size = new Size(90, 34);
             UserMbps.TabIndex = 16;
-            UserMbps.Value = new decimal(new int[] { 1000, 0, 0, 0 });
+            UserMbps.Value = new decimal(new int[] { 100, 0, 0, 0 });
             // 
             // EndPort
             // 
@@ -475,6 +475,7 @@
             InterfaceIP.Name = "InterfaceIP";
             InterfaceIP.Size = new Size(169, 34);
             InterfaceIP.TabIndex = 14;
+            InterfaceIP.Text = "18518676193";
             // 
             // IP
             // 
@@ -484,6 +485,7 @@
             IP.Name = "IP";
             IP.Size = new Size(169, 34);
             IP.TabIndex = 14;
+            IP.Text = "18518676193";
             // 
             // VPNTag
             // 
@@ -492,6 +494,7 @@
             VPNTag.Name = "VPNTag";
             VPNTag.Size = new Size(301, 34);
             VPNTag.TabIndex = 13;
+            VPNTag.Text = "office network";
             // 
             // APIKey
             // 
@@ -500,6 +503,7 @@
             APIKey.Name = "APIKey";
             APIKey.Size = new Size(301, 34);
             APIKey.TabIndex = 13;
+            APIKey.Text = "4c8aa0eb-87df-44d9-9a5b-a2a26fc4b122";
             // 
             // UID
             // 
@@ -508,6 +512,7 @@
             UID.Name = "UID";
             UID.Size = new Size(301, 34);
             UID.TabIndex = 13;
+            UID.Text = "64a582dd8d9eb9e39599b522";
             // 
             // groupBox1
             // 
@@ -517,7 +522,7 @@
             groupBox1.Controls.Add(label14);
             groupBox1.Controls.Add(label13);
             groupBox1.Controls.Add(NAT_Tag);
-            groupBox1.Location = new Point(37, 551);
+            groupBox1.Location = new Point(133, 473);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
@@ -534,6 +539,7 @@
             NAT_Network.Name = "NAT_Network";
             NAT_Network.Size = new Size(241, 34);
             NAT_Network.TabIndex = 14;
+            NAT_Network.Text = "185186 76  024";
             // 
             // NAT_Nat
             // 
@@ -543,6 +549,7 @@
             NAT_Nat.Name = "NAT_Nat";
             NAT_Nat.Size = new Size(241, 34);
             NAT_Nat.TabIndex = 14;
+            NAT_Nat.Text = " 11 11 12  024";
             // 
             // label15
             // 
@@ -716,10 +723,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1199, 945);
             Controls.Add(tabControl1);
+            ForeColor = Color.Black;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip3;
             Margin = new Padding(3, 4, 3, 4);
+            MaximizeBox = false;
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Niceland VPN - Self Hosted VPN Configuration Tool";
             Load += Form1_Load;
             tabControl1.ResumeLayout(false);
