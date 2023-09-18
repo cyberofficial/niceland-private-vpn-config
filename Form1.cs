@@ -220,22 +220,31 @@ namespace niceland_private_vpn_config
 
         private void newEntryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // check to see if txtDomainName is a valid domain name like google.com or txt.google.com, etc
-            if (!Regex.IsMatch(txtDomainName.Text, @"^([a-zA-Z0-9][a-zA-Z0-9\-]{0,61}[a-zA-Z0-9]\.)+[a-zA-Z]{2,}$"))
+            string input = txtDomainName.Text;
+
+            // Regex for validating an IP address
+            string ipPattern = @"^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$";
+
+            // Regex for validating a domain name
+            string domainPattern = @"^([a-zA-Z0-9][a-zA-Z0-9\-]{0,61}[a-zA-Z0-9]\.)+[a-zA-Z]{2,}$";
+
+            if (!Regex.IsMatch(input, ipPattern) && !Regex.IsMatch(input, domainPattern))
             {
-                // if it's not a valid domain name then show a message box and return
-                _ = MessageBox.Show("Invalid domain name");
+                _ = MessageBox.Show("Invalid domain name or IP address");
                 return;
             }
 
             // Add a new tab to the tab control "DomainTabs" with the text from "txtDomainName"
             DomainTabs.TabPages.Add(txtDomainName.Text);
+
             // create a new "DomainRecordsList" [ListBox] and add it to the new tab
             ListBox DomainRecordsList = new();
             DomainTabs.TabPages[^1].Controls.Add(DomainRecordsList);
+
             // make the dock style fill
             DomainRecordsList.Dock = DockStyle.Fill;
         }
+
 
         private void removeCurrentTabToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -247,7 +256,7 @@ namespace niceland_private_vpn_config
             else
             {
                 // if there is only 1 tab then show a message box and return
-                _ = MessageBox.Show("You can't remove the last tab");
+                _ = MessageBox.Show("You can not remove the last tab");
             }
         }
 
