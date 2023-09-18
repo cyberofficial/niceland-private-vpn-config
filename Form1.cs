@@ -225,8 +225,9 @@ namespace niceland_private_vpn_config
             // Regex for validating an IP address
             string ipPattern = @"^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$";
 
-            // Regex for validating a domain name
-            string domainPattern = @"^([a-zA-Z0-9][a-zA-Z0-9\-]{0,61}[a-zA-Z0-9]\.)+[a-zA-Z]{2,}$";
+            // Regex for validating a domain name, modified to accept single-character subdomains
+            string domainPattern = @"^([a-zA-Z0-9\-]{1,61}\.)+[a-zA-Z]{2,}$";
+
 
             if (!Regex.IsMatch(input, ipPattern) && !Regex.IsMatch(input, domainPattern))
             {
@@ -248,16 +249,17 @@ namespace niceland_private_vpn_config
 
         private void removeCurrentTabToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Remove the current selected tab from the tab control "DomainTabs" if there is more than 1 tab
-            if (DomainTabs.TabPages.Count > 1)
+            // Remove the current selected tab from the tab control "DomainTabs" if there are no more tabs to remove then we'll just return
+            if (DomainTabs.TabPages.Count == 0)
             {
-                DomainTabs.TabPages.Remove(DomainTabs.SelectedTab);
+                return;
             }
             else
             {
-                // if there is only 1 tab then show a message box and return
-                _ = MessageBox.Show("You can not remove the last tab");
+                DomainTabs.TabPages.Remove(DomainTabs.SelectedTab);
             }
+
+
         }
 
         private void insertItemToolStripMenuItem_Click(object sender, EventArgs e)
