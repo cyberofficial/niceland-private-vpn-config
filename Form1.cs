@@ -354,5 +354,47 @@ namespace niceland_private_vpn_config
 
 
         }
+
+        private void CBInterfaceIP_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CBInterfaceIP.Checked)
+            {
+                InterfaceIP.Enabled = false;
+                InterfaceIP.Text = IP.Text;
+            }
+            else
+            {
+                InterfaceIP.Enabled = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // in the current exe path of the program, look for the folder called "Profiles"
+            // then load all the files in that folder into the combobox "ProfileList"
+            // each profile is a json file
+            string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string profilesDirectory = Path.Combine(exeDirectory + "profiles");
+
+            // if the directory doesnt exist then create it to prevent errors
+            if (!Directory.Exists(profilesDirectory))
+            {
+                Directory.CreateDirectory(profilesDirectory);
+            }
+
+            // clear the combobox
+            ProfileList.Items.Clear();
+
+            // get all the files in the directory
+            string[] files = Directory.GetFiles(profilesDirectory);
+            foreach (string file in files)
+            {
+                // add the file name to the combobox if the extension is .json
+                if (Path.GetExtension(file) == ".json")
+                {
+                    _ = ProfileList.Items.Add(Path.GetFileNameWithoutExtension(file));
+                }
+            }
+        }
     }
 }

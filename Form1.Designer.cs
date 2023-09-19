@@ -95,6 +95,9 @@
             label2 = new Label();
             label1 = new Label();
             tabPage2 = new TabPage();
+            ProfileList = new ComboBox();
+            button2 = new Button();
+            LoadProfileBtn = new Button();
             tabPage3 = new TabPage();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -111,6 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)StartPort).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AvailableMbps).BeginInit();
             groupBox1.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -512,6 +516,7 @@
             CBInterfaceIP.TabIndex = 15;
             CBInterfaceIP.Text = "Same as IP";
             CBInterfaceIP.UseVisualStyleBackColor = true;
+            CBInterfaceIP.CheckedChanged += CBInterfaceIP_CheckedChanged;
             // 
             // LocalNetworkAccess
             // 
@@ -766,6 +771,9 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(ProfileList);
+            tabPage2.Controls.Add(button2);
+            tabPage2.Controls.Add(LoadProfileBtn);
             tabPage2.Location = new Point(4, 37);
             tabPage2.Margin = new Padding(3, 4, 3, 4);
             tabPage2.Name = "tabPage2";
@@ -774,6 +782,33 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Updating VPN";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // ProfileList
+            // 
+            ProfileList.FormattingEnabled = true;
+            ProfileList.Location = new Point(139, 7);
+            ProfileList.Name = "ProfileList";
+            ProfileList.Size = new Size(336, 36);
+            ProfileList.TabIndex = 1;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(481, 7);
+            button2.Name = "button2";
+            button2.Size = new Size(125, 35);
+            button2.TabIndex = 0;
+            button2.Text = "Refresh List";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // LoadProfileBtn
+            // 
+            LoadProfileBtn.Location = new Point(8, 7);
+            LoadProfileBtn.Name = "LoadProfileBtn";
+            LoadProfileBtn.Size = new Size(125, 35);
+            LoadProfileBtn.TabIndex = 0;
+            LoadProfileBtn.Text = "Load Profile";
+            LoadProfileBtn.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -825,6 +860,7 @@
             ((System.ComponentModel.ISupportInitialize)AvailableMbps).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            tabPage2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -897,5 +933,8 @@
         private Label label16;
         private Label label17;
         private TextBox sysctlconfigTXT;
+        private ComboBox ProfileList;
+        private Button button2;
+        private Button LoadProfileBtn;
     }
 }
